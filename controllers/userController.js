@@ -42,7 +42,7 @@ module.exports.login = async(req, res)=>{
     
         const token = jwt.sign({id:emailCheck._id}, process.env.TOKEN);
 
-        return res.status(200).json({status :true, user : {token, id : emailCheck._id}, message : 'Login successful!'});
+        return res.status(200).json({status :true, user : {token, id : emailCheck._id, acceptedRequests : emailCheck.msgRequest}, message : 'Login successful!'});
     } catch (error) {
         return res.status(500).json({error, status : false});
     }
